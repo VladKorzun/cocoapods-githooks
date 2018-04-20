@@ -3,7 +3,7 @@ require 'fileutils'
 
 module CocoapodsGitHooks
 	class GitHooks
-		def sync(context)
+		def sync
 			Pod::UI.puts "Synchronizing git hooks"
 			if !File.directory?(".git-hooks")
 				Pod::UI.puts ".git-hooks directory not found, nothing to sync"
