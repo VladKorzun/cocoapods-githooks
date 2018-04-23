@@ -1,24 +1,27 @@
 require 'cocoapods'
-require 'fileutils'
+require_relative 'githooks-synctool'
 
-module CocoapodsGitHooks
-	class GitHooks
-		def sync
-			Pod::UI.puts "Synchronizing git hooks"
-			if !File.directory?(".git-hooks")
-				Pod::UI.puts ".git-hooks directory not found, nothing to sync"
-				return
-			end
-			if Dir['.git-hooks/*'].empty?
-				Pod::UI.puts ".git-hooks directory is empty, nothing to sync"
-				return
-			end
-			if !File.directory?(".git/hooks")
-				FileUtils.mkdir ".git/hooks"
-			end
+# The CocoaPods check command.
 
-			FileUtils.cp_r(".git-hooks/.", ".git/hooks/")
-			FileUtils.chmod("+x", ".git/hooks/.")
-		end
-	end
+include CocoapodsGitHooks
+
+module Pod
+	class Command
+		class Githooks < Command
+			self.summary = <<-SUMMARY
+          		Syncs hooks between team members
+      		SUMMARY
+
+      		self.description = <<-DESC
+          		CocoaPods plugins that syncs git-hooks placed in .git-hooks directory between team members
+      		DESC
+
+			self.arguments = []
+
+      		def run
+      			githooks = CocoapodsGitHooks::GitHooksSynctool.new()
+      			githooks.sync()
+      		end
+    	end
+    end
 end
