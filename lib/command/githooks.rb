@@ -1,7 +1,5 @@
 require 'cocoapods'
-require_relative 'githooks-synctool'
-
-# The CocoaPods check command.
+require 'githooks-synctool'
 
 include CocoapodsGitHooks
 

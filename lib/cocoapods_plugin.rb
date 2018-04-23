@@ -1,4 +1,4 @@
-require_relative 'githooks'
+require 'command/githooks'
 require_relative 'githooks-synctool'
 
 module CocoapodsGitHooks
