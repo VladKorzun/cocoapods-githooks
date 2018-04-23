@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Vlad Korzun']
   spec.email         = ['vladyslavkorzun@gmail.com']
   spec.summary       = 'A CocoaPods plugin that syncs git hooks between team members'
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/VladKorzun/cocoapods-githooks'
   spec.license       = 'MIT'
   spec.files         = Dir['lib/**/*']
 
