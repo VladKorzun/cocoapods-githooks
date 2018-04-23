@@ -18,6 +18,12 @@ module CocoapodsGitHooks
 			end
 
 			FileUtils.cp_r(".git-hooks/.", ".git/hooks/")
+			path = ".git/hooks/"
+			Dir.open(path).each do |p|
+  				next if File.extname(p) != ".sh"
+  				filename = File.basename(p, File.extname(p))
+  				FileUtils.mv("#{path}/#{p}", "#{path}/#{filename}")
+			end
 			FileUtils.chmod("+x", ".git/hooks/.")
 			Pod::UI.puts "Git hooks synchronized"
 		end
