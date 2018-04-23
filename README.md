@@ -20,15 +20,20 @@ plugin 'cocoapods-githooks'
 
 4. Run
 
+```
 	$ pod install 
+```
 
 or
 
+```
 	$ pod update
+```
 
 or
 
+```
 	$ pod githooks
+```
 
 to sync git hooks. 
-
