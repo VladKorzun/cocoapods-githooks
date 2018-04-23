@@ -5,6 +5,10 @@ module CocoapodsGitHooks
 	class GitHooksSynctool
 		def sync
 			Pod::UI.puts "Synchronizing git hooks"
+			if !File.directory?(".git")
+				Pod::UI.puts "It is not a git repository, aborting"
+				return
+			end
 			if !File.directory?(".git-hooks")
 				Pod::UI.puts ".git-hooks directory not found, nothing to sync"
 				return
